@@ -1,7 +1,7 @@
 import Button from "../../forms/button/button";
 import styles from "./saleCard.module.css";
 
-const SaleCard = ({ desconto, precoCheio, title }) => {
+const SaleCard = ({ desconto, precoCheio, title, onAdd }) => {
   return (
     <div className={styles.saleCard}>
       <img
@@ -19,7 +19,7 @@ const SaleCard = ({ desconto, precoCheio, title }) => {
             <h4>R${(precoCheio - precoCheio * (desconto / 100)).toFixed(2)}</h4>
           </div>
         </div>
-        <Button>Adicionar ao carrinho</Button>
+        <Button fullwidth onClick={onAdd}>Adicionar ao carrinho</Button>
       </div>
     </div>
   );

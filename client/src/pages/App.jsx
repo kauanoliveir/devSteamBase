@@ -5,13 +5,16 @@ import Subtitle from "../components/forms/subtitle/subtitle";
 import Nav from "../components/nav/Nav";
 import "./App.css";
 
-import { useRecoilState, useRecoilValue } from "recoil"
-import { cartState } from "/src/atoms/cart"
+import { cartState } from "../atoms/cart"
+import { useRecoilState } from "recoil"
 
 const App = () => {
   const [cart, setCart] = useRecoilState(cartState);
 
-const handleAddProduct
+const handleAddProduct = (info) => {
+  setCart([...cart, info]);
+}
+console.log(cart);
  return (
     <div>
       <Nav />

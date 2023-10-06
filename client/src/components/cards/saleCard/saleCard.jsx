@@ -1,7 +1,7 @@
 import Button from "../../forms/button/button";
 import styles from "./saleCard.module.css";
 
-const SaleCard = ({ desconto, precoCheio, title, onAdd }) => {
+const SaleCard = ({ discount, fullPrice, title, onAdd }) => {
   return (
     <div className={styles.saleCard}>
       <img
@@ -13,13 +13,20 @@ const SaleCard = ({ desconto, precoCheio, title, onAdd }) => {
       <div className={styles.info}>
         <h3>Oferta exclusiva</h3>
         <div className={styles.priceCard}>
-          <div>-{desconto}%</div>
+          <div>-{discount}%</div>
           <div>
-            <p>R${precoCheio}</p>
-            <h4>R${(precoCheio - precoCheio * (desconto / 100)).toFixed(2)}</h4>
+            <p>R${fullPrice.toFixed(2).replace(".", ",")}</p>
+            <h4>
+              R$
+              {(fullPrice - fullPrice * (discount / 100))
+                .toFixed(2)
+                .replace(".", ",")}
+            </h4>
           </div>
         </div>
-        <Button fullwidth onClick={onAdd}>Adicionar ao carrinho</Button>
+        <Button fullwidth onClick={onAdd}>
+          Adicionar ao carrinho
+        </Button>
       </div>
     </div>
   );
@@ -27,8 +34,8 @@ const SaleCard = ({ desconto, precoCheio, title, onAdd }) => {
 
 SaleCard.defaultProps = {
   desconto: "50",
-  precoCheio: "199.80",
-  title: "Dota 2",  
+  precoCheio: "199.90",
+  title: "Dota 2",
 };
 
 export default SaleCard;
